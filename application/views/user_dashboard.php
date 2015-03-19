@@ -26,13 +26,19 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-		        <tr>
-		          <td>1</td>
-		          <td>Michael Choi</td>
-		          <td>michael@village88.com</td>
-		          <td>Dec. 24th 2015</td>
-		          <td>admin</td>
-		        </tr>
+<!-- LOOP STARTS -->
+<?php 			foreach ($users as $user)
+						{
+?>						<tr>
+			          <td><?= $user['id']; ?></td>
+			          <td><?= $user['first_name'] . " " . $user['last_name']; ?></td>
+			          <td><?= $user['email']; ?></td>
+			          <td><?= $user['created_at']; ?></td>
+			          <td><?= $user['user_level'] ?></td>
+			        </tr>
+<?php 			}
+?>
+<!-- LOOP ENDS -->
 		      </tbody>
 		    </table>
 			</div>

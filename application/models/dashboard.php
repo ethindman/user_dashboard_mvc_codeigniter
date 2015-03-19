@@ -10,6 +10,13 @@ class Dashboard extends CI_Model {
 		return $result;
 	}
 
+	public function retrieveAllUsers()
+	{
+		$query = "SELECT id, first_name, last_name, email, DATE_FORMAT(created_at, '%M %d, %Y') AS created_at, user_level FROM users";
+		$users = $this->db->query( $query )->result_array();
+		return $users;
+	}
+
 	public function retrieveOneUser($postData)
 	{
 		$query = "SELECT * FROM users WHERE email = ? AND password = ?";

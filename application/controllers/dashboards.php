@@ -76,11 +76,13 @@ class Dashboards extends CI_Controller {
 	{
 		if($this->session->userdata('user_level') == 'admin')
 		{
-			$this->load->view('admin_dashboard');
+			$users = $this->dashboard->retrieveAllUsers();
+			$this->load->view('admin_dashboard', array('users' => $users));
 		}
 		else if ($this->session->userdata('user_level') == 'normal')
 		{
-			$this->load->view('user_dashboard');
+			$users = $this->dashboard->retrieveAllUsers();
+			$this->load->view('user_dashboard', array('users' => $users));
 		}
 		else {
 			redirect('/');
