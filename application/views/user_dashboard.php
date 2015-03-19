@@ -11,7 +11,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3>All Users</h3>
+				<h3>Hello <?= $this->session->userdata('username') ?> (<?= $this->session->userdata('user_level') ?>)</h3>
+				<h4 class="inline">All Users</h4>
 			</div>
 			<div class="col-lg-12">
 				<table class="table table-bordered">

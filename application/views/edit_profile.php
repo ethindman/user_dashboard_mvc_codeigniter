@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3 class="inline">Edit profile</h3>
-				<a href="showDashboard"><button type="submit" class="btn btn-info pull-right inline">Return to Dashboard</button></a>
+				<a href="dashboard"><button type="submit" class="btn btn-info pull-right inline">Return to Dashboard</button></a>
 			</div>
 		</div>
 	</div>

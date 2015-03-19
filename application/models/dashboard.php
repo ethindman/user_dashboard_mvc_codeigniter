@@ -2,15 +2,21 @@
 
 class Dashboard extends CI_Model {
 
-	// public function __construct()
-	// {
-	// 	parent::__construct();
-	// 	$this->output->enable_profiler();
-	// }
-
-	public function index()
+	public function createNewUser($postData)
 	{
-		die("in model");
+		//make first user automatticaly addmin, normal thereafter
+		$query = "INSERT INTO users (first_name, last_name, email, password, user_level, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
+		$result = $this->db->query( $query, array($postData['first_name'], $postData['last_name'], $postData['email'], $postData['password'], 'normal' ));
+		return $result;
+	}
+
+	public function retrieveOneUser($postData)
+	{
+		$query = "SELECT * FROM users WHERE email = ? AND password = ?";
+		$user = $this->db->query( $query, array($postData['email'], $postData['password']) )->row_array();
+		return $user;
+	}
+
 }
 
 //end of Dashboard model

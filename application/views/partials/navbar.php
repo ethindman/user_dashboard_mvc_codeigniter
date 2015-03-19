@@ -15,8 +15,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="showDashboard">Dashboard</a></li>
-            <li><a href="showProfile">Profile</a></li>
+            <li><a href="dashboard">Dashboard</a></li>
+            <li><a href="profile">Profile</a></li>
           </ul>
           <div class="navbar-form navbar-right">
             <a href="logout"><button type="submit" class="btn btn-success">Log Out</button></a>

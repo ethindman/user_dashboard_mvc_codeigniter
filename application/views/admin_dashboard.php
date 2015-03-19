@@ -11,8 +11,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="inline">Manage Users</h3>
-				<a href="addNewUser"><button type="submit" class="btn btn-info pull-right inline">Add New</button></a>
+				<h3>Hello <?= $this->session->userdata('username') ?> (<?= $this->session->userdata('user_level') ?>)</h3>
+				<h4 class="inline">Manage Users</h4>
+				<a href="new_user"><button type="submit" class="btn btn-info pull-right inline">Add New</button></a>
 			</div>
 		</div>
 	</div>
@@ -39,7 +40,7 @@
 		          <td>Dec. 24th 2015</td>
 		          <td>admin</td>
 		          <td>
-		          	<a href="editUser">edit</a> |
+		          	<a href="edit_user">edit</a> |
 		          	<a href="#">remove</a>
 		          </td>
 		        </tr>

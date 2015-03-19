@@ -37,7 +37,7 @@
 				</form>
 			</div>
 			<div class="col-lg-6">
-				<a href="showDashboard"><button type="submit" class="btn btn-info pull-right">Return to Dashboard</button></a>
+				<a href="dashboard"><button type="submit" class="btn btn-info pull-right">Return to Dashboard</button></a>
 			</div>
 		</div>
 	</div>
