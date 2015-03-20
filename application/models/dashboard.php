@@ -38,6 +38,13 @@ class Dashboard extends CI_Model {
 		return $result;
 	}
 
+	public function updateUser($postData)
+	{
+		$query = "UPDATE users SET email = ?, first_name = ?, last_name = ?, user_level =?, updated_at = NOW() WHERE id = ?";
+		$result = $this->db->query( $query, array($postData['email'], $postData['first_name'], $postData['last_name'], $postData['user_level'], $postData['id']) );
+		return $result;
+	}
+
 	public function updatePassword($postData)
 	{
 		$query = "UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?";
@@ -49,6 +56,13 @@ class Dashboard extends CI_Model {
 	{
 		$query = "UPDATE users SET description = ?, updated_at = NOW() WHERE id = ?";
 		$result = $this->db->query( $query, array($postData['description'], $postData['id']) );
+		return $result;
+	}
+
+	public function destroyUser($id)
+	{
+		$query = "DELETE FROM users WHERE id = ?";
+		$result = $this->db->query( $query, array($id) );
 		return $result;
 	}
 

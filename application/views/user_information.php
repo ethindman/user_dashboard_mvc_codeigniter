@@ -8,10 +8,25 @@
 	$this->load->view('partials/navbar');
 ?>
 <br>
+  <div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="inline"><?= $user['user_name']; ?></h3>
+<?php 	if($this->session->userdata('user_id') == $user['id'])
+				{
+?>				<form action="edit_profile" method="post">
+          <input type="hidden" name="id" value="<?= $this->session->userdata('user_id') ?>">
+          <input class="btn btn-info" type="submit" value="Edit Profile">
+  	      </form>
+<?php 	}
+?>
+			</div>
+		</div>
+	</div>
+	<br>      
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
-				<h3><?= $user['user_name']; ?></h3>
 				<table class="table table" style="text-align: left">
 					<tbody>
 						<tr>

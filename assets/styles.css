@@ -17,6 +17,9 @@ button.inline {
 p.inline {
 	margin-top: 10px;
 }
+form.inline {
+	vertical-align: top;
+}
 table {
 	text-align: center;
 }
@@ -32,11 +35,11 @@ th, td {
 div.alert {
 	text-align: center;
 }
-input.link, input.nav-link {
+input.link, input.nav-link, button.link {
 	background: none;
 	border: none;
 }
-input.link:hover {
+input.link:hover, button.link:hover {
 	text-decoration: underline;
 }
 input.nav-link {

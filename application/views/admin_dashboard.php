@@ -2,10 +2,20 @@
 	$this->load->view('partials/head');
 ?>
 	<title>Admin Dashboard</title>
+	<script>
+		$(document).ready(function() {
+			$('button.special-button').on('click', function() {
+				var id = $(this).val();
+				$('#passId').val(id);
+			})
+		});
+	</script>
 </head>
 <body>
 <?php 
 	$this->load->view('partials/navbar');
+	$this->load->view('partials/messages');
+	$this->load->view('partials/modal');
 ?>
 <br>
 	<div class="container">
@@ -29,7 +39,7 @@
 		          <th>Email</th>
 		          <th>Created At</th>
 		          <th>User Level</th>
-		          <th>Actions</th>
+		          <th colspan="2">Actions</th>
 		        </tr>
 		      </thead>
 		      <tbody>
@@ -48,8 +58,13 @@
 			          <td><?= $user['created_at']; ?></td>
 			          <td><?= $user['user_level']; ?></td>
 			          <td>
-			          	<a href="edit_user">edit</a> |
-			          	<a href="#">remove</a>
+			          	<form class="link" action="edit_user" method="post">
+			          		<input type="hidden" name="id" value="<?= $user['id']; ?>">
+			          		<input class="link" type="submit" value="edit">
+			          	</form>
+			          </td>
+			          <td>
+			          	<button value="<?= $user['id']; ?>" type="button" class="link" data-toggle="modal" data-target=".bs-example-modal-lg">Remove</button>
 			          </td>
 			        </tr>
 <?php 			} 

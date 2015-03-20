@@ -70,7 +70,8 @@ class Dashboards extends CI_Controller {
 
 	public function edit_user()
 	{
-		$this->load->view('edit_user');
+		$user = $this->dashboard->retrieveUserProfile($this->input->post('id'));
+		$this->load->view('edit_user', array('user' => $user));
 	}
 
 	public function dashboard()
@@ -129,6 +130,22 @@ class Dashboards extends CI_Controller {
 		}
 	}
 
+	public function updateUser()
+	{
+		$postData = $this->input->post();
+		$result = $this->dashboard->updateUser($postData);
+		if($result)
+		{
+			$this->session->set_flashdata("success", "User successfully updated!");
+			redirect('dashboard');
+		}
+		else
+		{
+			$this->session->set_flashdata("error", "Something went wrong! Please try again later...");
+			redirect('dashboard');
+		}
+	}
+
 	public function updatePassword()
 	{
 		$postData = $this->input->post();
@@ -136,12 +153,12 @@ class Dashboards extends CI_Controller {
 		if($result)
 		{
 			$this->session->set_flashdata("success", "Password successfully updated!");
-			redirect('edit_profile');
+			redirect('dashboard');
 		}
 		else
 		{
-			$this->session->set_flashdata("error", "Something went wrong! We couldn't update your password. Please try again later...");
-			redirect('edit_profile');
+			$this->session->set_flashdata("error", "Something went wrong! We couldn't update password. Please try again later...");
+			redirect('dashboard');
 		}
 	}
 
@@ -159,6 +176,28 @@ class Dashboards extends CI_Controller {
 		{
 			$this->session->set_flashdata("error", "Something went wrong! We couldn't update your description. Please try again later...");
 			redirect('edit_profile');
+		}
+	}
+
+	public function destroyUser()
+	{
+		if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('user_level') == 'admin')
+		{			
+			$result = $this->dashboard->destroyUser($this->input->post('id'));
+			if($result)
+			{
+				$this->session->set_flashdata("success", "User successfully deleted!");
+				redirect('dashboard');
+			}
+			else
+			{
+				$this->session->set_flashdata("error", "Sorry, we couldn't delete that user now. Please try again later.");
+				redirect('dashboard');
+			}
+		}
+		else
+		{
+			redirect('/');
 		}
 	}
 

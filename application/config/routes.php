@@ -18,10 +18,9 @@ $route['logout'] = "dashboards/logout";
 $route['createNewUser'] = "dashboards/createNewUser";
 $route['retrieveOneUser'] = "dashboards/retrieveOneUser";
 $route['updateUserProfile'] = "dashboards/updateUserProfile";
+$route['updateUser'] = "dashboards/updateUser";
 $route['updatePassword'] = "dashboards/updatePassword";
 $route['updateDescription'] = "dashboards/updateDescription";
-
-
-
+$route['destroyUser'] = "dashboards/destroyUser";
 
 //end of routes.php
