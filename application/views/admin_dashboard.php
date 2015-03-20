@@ -38,10 +38,15 @@
 						{
 ?>						<tr>
 			          <td><?= $user['id']; ?></td>
-			          <td><?= $user['first_name'] . " " . $user['last_name']; ?></td>
+			          <td>
+			          	<form action="profile" method="post">
+			          		<input type="hidden" name="id" value="<?= $user['id']; ?>">
+			          		<input class="link" type="submit" value="<?= $user['first_name'] . " " . $user['last_name']; ?>">
+			          	</form>
+			          </td>
 			          <td><?= $user['email']; ?></td>
 			          <td><?= $user['created_at']; ?></td>
-			          <td><?= $user['user_level'] ?></td>
+			          <td><?= $user['user_level']; ?></td>
 			          <td>
 			          	<a href="edit_user">edit</a> |
 			          	<a href="#">remove</a>

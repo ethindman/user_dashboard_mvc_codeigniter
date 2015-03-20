@@ -32,3 +32,13 @@ th, td {
 div.alert {
 	text-align: center;
 }
+input.link, input.nav-link {
+	background: none;
+	border: none;
+}
+input.link:hover {
+	text-decoration: underline;
+}
+input.nav-link {
+	outline: none;
+}

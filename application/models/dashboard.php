@@ -24,6 +24,13 @@ class Dashboard extends CI_Model {
 		return $user;
 	}
 
+	public function retrieveUserProfile($id)
+	{
+		$query = "SELECT id, first_name, last_name, CONCAT_WS(' ', first_name, last_name) AS user_name, email, description, DATE_FORMAT(created_at, '%M %d, %Y') AS created_at FROM users WHERE id = ?";
+		$user = $this->db->query( $query, array($id) )->row_array();
+		return $user;
+	}
+
 }
 
 //end of Dashboard model

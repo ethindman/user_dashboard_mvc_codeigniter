@@ -92,8 +92,9 @@ class Dashboards extends CI_Controller {
 	public function profile()
 	{
 		if($this->session->userdata('logged_in') == TRUE)
-		{
-			$this->load->view('user_information');
+		{			
+			$user = $this->dashboard->retrieveUserProfile($this->input->post('id'));
+			$this->load->view('user_information', array('user' => $user));
 		}
 		else
 		{

@@ -10,25 +10,25 @@
 <br>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-				<h3>Michale Jordan</h3>
+			<div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+				<h3><?= $user['user_name']; ?></h3>
 				<table class="table table" style="text-align: left">
 					<tbody>
 						<tr>
 							<td>Registered at:</td>
-							<td>December 24th 2015</td>
+							<td><?= $user['created_at']; ?></td>
 						</tr>
 						<tr>
 							<td>User ID:</td>
-							<td>#4</td>
+							<td>#<?= $user['id']; ?></td>
 						</tr>
 						<tr>
 							<td>Email Address:</td>
-							<td>michaeljordan@gmail.com</td>
+							<td><?= $user['email']; ?></td>
 						</tr>
 						<tr>
 							<td>Description:</td>
-							<td>Basketball is my life.</td>
+							<td><?= $user['description']; ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -38,7 +38,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h4>Leave a message for Michael</h4>
+				<h4>Leave a message for <?= $user['first_name']; ?></h4>
 				<form action="#" method="post">
 					<div class="form-group">
 				  	<textarea class="form-control" rows="3" name="description" placeholder="Write a message..."></textarea>
