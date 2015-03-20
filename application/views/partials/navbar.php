@@ -17,12 +17,19 @@
           <ul class="nav navbar-nav">
             <li><a href="dashboard">Dashboard</a></li>
             <li>
-              <a><form action="profile" method="post">
+              <a><form action="edit_profile" method="post">
                 <input type="hidden" name="id" value="<?= $this->session->userdata('user_id') ?>">
-                <input class="nav-link" type="submit" value="Profile">
+                <input class="nav-link" type="submit" value="Edit Profile">
+              </form></a>
+            </li>
+            <li>
+               <a><form action="profile" method="post">
+                <input type="hidden" name="id" value="<?= $this->session->userdata('user_id') ?>">
+                <input class="nav-link" type="submit" value="<?= $this->session->userdata('first_name'); ?>'s Profile">
               </form></a>
             </li>
           </ul>
+
           <div class="navbar-form navbar-right">
             <a href="logout"><button type="submit" class="btn btn-success">Log Out</button></a>
           </div>

@@ -31,6 +31,27 @@ class Dashboard extends CI_Model {
 		return $user;
 	}
 
+	public function updateUserProfile($postData)
+	{
+		$query = "UPDATE users SET email = ?, first_name = ?, last_name = ?, updated_at = NOW() WHERE id = ?";
+		$result = $this->db->query( $query, array($postData['email'], $postData['first_name'], $postData['last_name'], $postData['id']) );
+		return $result;
+	}
+
+	public function updatePassword($postData)
+	{
+		$query = "UPDATE users SET password = ?, updated_at = NOW() WHERE id = ?";
+		$result = $this->db->query( $query, array($postData['password'], $postData['id']) );
+		return $result;
+	}
+
+	public function updateDescription($postData)
+	{
+		$query = "UPDATE users SET description = ?, updated_at = NOW() WHERE id = ?";
+		$result = $this->db->query( $query, array($postData['description'], $postData['id']) );
+		return $result;
+	}
+
 }
 
 //end of Dashboard model

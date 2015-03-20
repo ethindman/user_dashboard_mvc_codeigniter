@@ -9,6 +9,7 @@ $route['signin'] = "dashboards/sign_in";
 $route['register'] = "dashboards/register";
 $route['new_user'] = "dashboards/new_user";
 $route['edit_user'] = "dashboards/edit_user";
+$route['edit_profile'] = "dashboards/edit_profile";
 $route['dashboard'] = "dashboards/dashboard";
 $route['profile'] = "dashboards/profile";
 $route['logout'] = "dashboards/logout";
@@ -16,6 +17,9 @@ $route['logout'] = "dashboards/logout";
 //Real methods
 $route['createNewUser'] = "dashboards/createNewUser";
 $route['retrieveOneUser'] = "dashboards/retrieveOneUser";
+$route['updateUserProfile'] = "dashboards/updateUserProfile";
+$route['updatePassword'] = "dashboards/updatePassword";
+$route['updateDescription'] = "dashboards/updateDescription";
 
 
 
