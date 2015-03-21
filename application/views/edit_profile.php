@@ -13,7 +13,10 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3 class="inline">Hello <?= $this->session->userdata('first_name') ?>!</h3>
-				<a href="dashboard"><button type="submit" class="btn btn-info pull-right inline">Return to Dashboard</button></a>
+				<form action="profile" method="post">
+					<input type="submit" class="btn btn-info pull-right inline" value="Return to Profile">
+					<input type="hidden" name="id" value="<?= $this->session->userdata('user_id'); ?>">
+				</form>
 				<p>Let's edit your profile!</p>
 			</div>
 		</div>
