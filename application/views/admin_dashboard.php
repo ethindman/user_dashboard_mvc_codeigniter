@@ -64,7 +64,7 @@
 			          	</form>
 			          </td>
 			          <td>
-			          	<button value="<?= $user['id']; ?>" type="button" class="link" data-toggle="modal" data-target=".bs-example-modal-lg">Remove</button>
+			          	<button value="<?= $user['id']; ?>" type="button" class="link special-button" data-toggle="modal" data-target=".bs-example-modal-lg">Remove</button>
 			          </td>
 			        </tr>
 <?php 			} 

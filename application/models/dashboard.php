@@ -10,11 +10,25 @@ class Dashboard extends CI_Model {
 		return $result;
 	}
 
+	public function createMessage($postData)
+	{
+		$query = "INSERT INTO messages (message, author_id, recipient_id, created_at, updated_at) VALUES (?, ?, ?, NOW(), NOW())";
+		$result = $this->db->query( $query, array($postData['message'], $postData['author_id'], $postData['recipient_id']) );
+		return $postData['recipient_id'];
+	}
+
 	public function retrieveAllUsers()
 	{
 		$query = "SELECT id, first_name, last_name, email, DATE_FORMAT(created_at, '%M %d, %Y') AS created_at, user_level FROM users";
 		$users = $this->db->query( $query )->result_array();
 		return $users;
+	}
+
+	public function retrieveAllMessages($id)
+	{
+		$query = "SELECT * FROM messages WHERE recipient_id = ?";
+		$messages = $this->db->query( $query, array($id) )->result_array();
+		return $messages;
 	}
 
 	public function retrieveOneUser($postData)

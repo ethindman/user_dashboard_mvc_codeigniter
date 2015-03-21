@@ -6,6 +6,7 @@
 <body>
 <?php 
 	$this->load->view('partials/navbar');
+	$this->load->view('partials/messages');
 ?>
 <br>
   <div class="container">
@@ -54,11 +55,13 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<h4>Leave a message for <?= $user['first_name']; ?></h4>
-				<form action="#" method="post">
+				<form action="createMessage" method="post">
 					<div class="form-group">
-				  	<textarea class="form-control" rows="3" name="description" placeholder="Write a message..."></textarea>
+				  	<textarea class="form-control" rows="3" name="message" placeholder="Write a message..."></textarea>
 					</div>
 					<button type="submit" class="btn btn-success pull-right">Post</button>
+					<input type="hidden" name="author_id" value="<?= $this->session->userdata('user_id'); ?>">
+					<input type="hidden" name="recipient_id" value="<?= $user['id']; ?>">
 				</form>
 			</div>
 		</div>
@@ -69,11 +72,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h5 class="inline">Mark Anthony wrote:</h5>
-				<p class="inline pull-right">7 hours ago</p>
-				<div class="well">
-					<p>Low hanging fruit market technology. Ownership gen-z deployment metrics infographic stealth www.discoverartisans.com technology scrum project partnership pitch. Leverage assets freemium release beta hypotheses strategy accelerator. Beta series A financing founders startup market value proposition analytics agile development supply chain monetization seed money launch party funding.</p>
-				</div>
+<?php 
+				foreach ($messages as $message) 
+				{
+?>				<h5 class="inline"><?= $message['author_id']; ?> wrote:</h5>
+					<p class="inline pull-right"><?= $message['created_at']; ?></p>
+					<div class="well">
+						<p><?= $message['message']; ?></p>
+					</div>
+<?php 	}
+?>
 			</div>
 			<div class="col-lg-11 col-md-12 col-sm-12 pull-right">
 				<h5 class="inline">Julius Ceasar wrote:</h5>

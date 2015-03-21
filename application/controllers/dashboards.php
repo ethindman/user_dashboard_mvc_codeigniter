@@ -95,8 +95,20 @@ class Dashboards extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in') == TRUE)
 		{			
-			$user = $this->dashboard->retrieveUserProfile($this->input->post('id'));
-			$this->load->view('user_information', array('user' => $user));
+			if($this->session->userdata('recipient_id'))
+			{
+				$user = $this->dashboard->retrieveUserProfile($this->session->userdata('recipient_id'));
+				
+				$messages = $this->dashboard->retrieveAllMessages($this->session->userdata('recipient_id'));
+				$this->session->unset_userdata('recipient_id');
+				$this->load->view('user_information', array('user' => $user, 'messages' => $messages));
+			}
+			else
+			{
+				$user = $this->dashboard->retrieveUserProfile($this->input->post('id'));
+				$messages = $this->dashboard->retrieveAllMessages($this->input->post('id'));
+				$this->load->view('user_information', array('user' => $user, 'messages' => $messages));
+			}
 		}
 		else
 		{
@@ -199,6 +211,23 @@ class Dashboards extends CI_Controller {
 		{
 			redirect('/');
 		}
+	}
+
+	public function createMessage()
+	{
+		$postData = $this->input->post();
+		$result = $this->dashboard->createMessage($postData);
+		if($result)
+			{
+				$this->session->set_flashdata("success", "Message successfully posted!");
+				$this->session->set_userdata('recipient_id', $postData['recipient_id']);
+				redirect('profile');
+			}
+			else
+			{
+				$this->session->set_flashdata("error", "Sorry, we couldn't post your message right now. Please try again later.");
+				redirect('profile');
+			}
 	}
 
 	public function logout()
